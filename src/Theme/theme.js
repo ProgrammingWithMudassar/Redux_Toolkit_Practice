@@ -5,24 +5,23 @@ const font = 'Nunito, sans-serif';
 
 const theme = createTheme({
   palette: {
-    background: {
-      default: "#eee",
-      custom: "#0A4DAA"
-    },
-    mode: 'light',
+
+
     primary: {
-      main: '#000000',
+      main: '#007bff', // new primary color
     },
     secondary: {
-      main: "#FFFFFF"
+      main: '#ffff', // new secondary color
     },
-    tirtionary: {
-      main: "#0A4DAA"
+    background: {
+      default: "#eee",
+      custom: "#17355F"
     },
-    black: {
-      main: '#000000'
-    }
+
+
   },
+
+
   typography: {
     fontFamily: font,
     button: {

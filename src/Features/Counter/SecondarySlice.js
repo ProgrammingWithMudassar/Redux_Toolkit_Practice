@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 1,
-  name:"First Slice"
+  value: 2,
+  name:"Second Slice"
 }
 
 export const counterSlice = createSlice({

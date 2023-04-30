@@ -1,21 +1,24 @@
 import { useState } from 'react'
-import './App.css'
-import Button from '@mui/material/Button'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from './Components/index'
 import {
-  Home,About
-} from './Components/index'
+  HomePage, About, Service
+} from './Pages/index'
+import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      Well Mudassar G.
-      <Button variant="contained" color="primary">
-        click me
-      </Button>
-      <Home />
-      <About />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/service" element={<Service />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
