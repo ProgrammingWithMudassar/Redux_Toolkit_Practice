@@ -4,17 +4,9 @@ import {
   SecondSlice,
   ThirdSlice
 } from './Counter/index.js'
+
 import storage from 'redux-persist/es/storage'
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
 
 
@@ -24,7 +16,6 @@ const PersisConfig = {
   key: 'root',
   version: 1,
   storage,
-  //blacklisting a store attribute name, will not persist that store attribute.
   blacklist: ['SecondCounter'],
 }
 
@@ -35,7 +26,7 @@ const rootReducer = combineReducers({
   ThirdCounter: ThirdSlice,
 })
 
-const PersistedReducer  = persistReducer( PersisConfig,  rootReducer )
+const PersistedReducer = persistReducer(PersisConfig, rootReducer)
 
 
 
