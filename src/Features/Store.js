@@ -25,7 +25,7 @@ const PersisConfig = {
   version: 1,
   storage,
   //blacklisting a store attribute name, will not persist that store attribute.
-  blacklist: ['age'],
+  blacklist: ['SecondCounter'],
 }
 
 //Second
@@ -35,20 +35,22 @@ const rootReducer = combineReducers({
   ThirdCounter: ThirdSlice,
 })
 
-const PersistorReducer  = persistReducer(
-  PersisConfig,
-  rootReducer
-)
+const PersistedReducer  = persistReducer( PersisConfig,  rootReducer )
 
 
 
 
 const store = configureStore({
-  reducer: {
-    counter: FirstSlice,
-    SecondCounter: SecondSlice,
-    ThirdCounter: ThirdSlice,
-  }
-});
+  reducer: PersistedReducer,
+})
+
+
+// const store = configureStore({
+//   reducer: {
+//     counter: FirstSlice,
+//     SecondCounter: SecondSlice,
+//     ThirdCounter: ThirdSlice,
+//   }
+// });
 
 export default store;
