@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Box, Button, Typography
 } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from '../Features/Counter/CounterSlice'
 import { SecPlus, SecMinus } from '../Features/Counter/SecondarySlice'
-import { minus, add } from '../Features/Counter/ThirdSlice'
+import { incrementWithAmount } from '../Features/Counter/ThirdSlice'
 
 
 const Home = () => {
+
+  const [inputValue, setInputValue] = useState('');
+
+
   const count = useSelector((state) => {
     return ({
       firstCounter: state.counter,
@@ -18,29 +22,35 @@ const Home = () => {
   })
   const dispatch = useDispatch();
 
-//First
+  //First
   const Minus = () => {
     dispatch(decrement());
   }
   const Add = () => {
     dispatch(increment());
   }
-//second
+  //second
   const MinusSec = () => {
     dispatch(SecMinus());
   }
   const AddSec = () => {
     dispatch(SecPlus());
   }
-//Third
-  const MinusTrd = () => {
-    dispatch(minus());
+
+
+  //Third
+  const handleInput =(e)=>{
+    var value = e.target.value;
+    const number = parseInt(value);
+    setInputValue(number);
   }
-  const AddTrd = () => {
-    dispatch(add());
+  const UpdateState = () => {
+    
+    dispatch(incrementWithAmount(inputValue))
   }
+
   //Reset All
-  const ClearAll =()=>{
+  const ClearAll = () => {
     localStorage.clear();
     location.reload();
   }
@@ -64,12 +74,12 @@ const Home = () => {
 
         <Box mt={6}>
           <Typography variant="body1" color="initial">Third Slice</Typography>
-          <Button sx={{ color: '#000', mr: 4 }} onClick={MinusTrd}>-</Button>
-          <span>{count.thirdCounter.ThirdNum}</span>
-          <Button sx={{ color: '#000', ml: 4 }} onClick={AddTrd}>+</Button>
+          <input type="number" style={{ padding: '5px', border: '1px solid black' }} value={inputValue}  onChange={handleInput}/><br />
+          <span>{count.thirdCounter.ThirdNum}</span><br />
+          <Button sx={{ color: '#000' }} onClick={UpdateState}>Update Third Slice State</Button>
           <br />
         </Box>
-        <Button sx={{ color: '#000', mt: 4 }} onClick={ClearAll}>Reset All</Button>
+        <Button sx={{ color: '#000', mt: 10 }} onClick={ClearAll}>Reset All</Button>
       </Box>
     </>
   )
