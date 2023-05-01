@@ -9,8 +9,6 @@ import storage from 'redux-persist/es/storage'
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
 
-
-
 //First
 const PersisConfig = {
   key: 'root',
@@ -27,9 +25,6 @@ const rootReducer = combineReducers({
 })
 
 const PersistedReducer = persistReducer(PersisConfig, rootReducer)
-
-
-
 
 const store = configureStore({
   reducer: PersistedReducer,

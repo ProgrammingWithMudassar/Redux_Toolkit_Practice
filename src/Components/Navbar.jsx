@@ -15,9 +15,9 @@ const Navbar = () => {
           <li>
             <Link to='/about'  style={{color:"#fff"}}>About</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to='/service'  style={{color:"#fff"}}>Service</Link>
-          </li>
+          </li> */}
         </ul>
       </Box>
     </>
