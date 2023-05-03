@@ -14,22 +14,24 @@ const Home = () => {
 
 
   const count = useSelector((state) => {
+    console.log(state);
     return ({
-      firstCounter: state.counter,
-      secondCounter: state.SecondCounter,
-      thirdCounter: state.ThirdCounter,
+      firstCounter: state.PersistedReducer.counter,
+      secondCounter: state.PersistedReducer.SecondCounter,
+      thirdCounter: state.PersistedReducer.ThirdCounter,
     })
   })
   const dispatch = useDispatch();
 
-  //First
+  //firstCounter Reducers
   const Minus = () => {
     dispatch(decrement());
   }
   const Add = () => {
     dispatch(increment());
   }
-  //second
+
+  //secondCounter Reducers
   const MinusSec = () => {
     dispatch(SecMinus());
   }
@@ -37,8 +39,7 @@ const Home = () => {
     dispatch(SecPlus());
   }
 
-
-  //Third
+  //thirdCounter Reducers
   const handleInput =(e)=>{
     var value = e.target.value;
     const number = parseInt(value);
@@ -57,6 +58,9 @@ const Home = () => {
 
   return (
     <>
+    {
+      console.log(count)
+    }
       <Box sx={{ textAlign: 'center', mt: 4 }}>
         <Typography variant="body1" color="initial">Frist Slice</Typography>
         <Button sx={{ color: '#000', mr: 4 }} onClick={Minus}>-</Button>
