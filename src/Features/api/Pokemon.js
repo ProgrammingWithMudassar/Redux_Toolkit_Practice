@@ -16,9 +16,52 @@ export const pokemonApi = createApi({
             onError: (error) => {
                 console.error('Error fetching all posts:', error)
             }
+        }),
+
+        getPostById: builder.query({
+            query: (id) => ({
+                url: `posts/${id}`,
+                method: 'GET'
+            }),
+            onError: (error) => {
+                console.log("Error fetching during getDataById : ", error);
+            }
+        }),
+
+        getPostByLimit: builder.query({
+            query: (num) => {
+                console.log('data limit: ', num);
+                return {
+                    url: `posts?_limit=${num}`,
+                    method: 'GET'
+                }
+            },
+            onError: (error) => {
+                console.log("Error fetching during getDataById : ", error);
+            }
+        }),
+
+//   InDelete Query are two thing one is Callback function(pass the data) and other is object
+
+        deletePost: builder.mutation({
+            query: (id) => {
+                console.log('data limit: ', id);
+                return {
+                    url: `posts/${id}`,
+                    method: 'DELETE'
+                }
+            },
+            onError: (error) => {
+                console.log("Error fetching during deletePost : ", error);
+            }
         })
-    })
+    }),
 })
 
 
-export const { useGetAllPostsQuery } = pokemonApi;
+export const {
+    useGetAllPostsQuery,
+    useGetPostByIdQuery,
+    useGetPostByLimitQuery,
+    useDeletePostMutation
+} = pokemonApi;
