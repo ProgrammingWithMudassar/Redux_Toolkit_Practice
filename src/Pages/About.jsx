@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Box from '@mui/material/Box'
+import {Box, Button} from '@mui/material'
 import Typography from '@mui/material/Typography'
 import {
   useGetAllPostsQuery,
   useGetPostByIdQuery,
   useGetPostByLimitQuery,
-  useDeletePostMutation
+  useDeletePostMutation,
+  useCreatePostMutation
 } from '../Features/api/Pokemon.js'
 
 
@@ -26,7 +27,10 @@ const About = () => {
   // var respInfo = useGetAllPostsQuery();
   // var respInfo = useGetPostByIdQuery(5);
   var respInfo = useGetPostByLimitQuery(2);
-  var [deletePost, info] = useDeletePostMutation();
+  // var [deletePost, info] = useDeletePostMutation();
+
+  var [ createPost, info] = useCreatePostMutation();
+
 
 
   console.log("data", info.data);
@@ -54,7 +58,7 @@ const About = () => {
       } */}
 
         {/* that is fetching only specific data. */}
-        <Typography variant="body1" color="initial">Body of data: {respInfo.data.body}</Typography>
+        {/* <Typography variant="body1" color="initial">Body of data: {respInfo.data.body}</Typography> */}
 
 
         {/* That is getting limited data. */}
@@ -70,8 +74,8 @@ const About = () => {
         } */}
 
 
-        <button style={{ padding: '10px'}} onClick={()=>{deletePost(1)}}>Delete Button</button>
-
+        {/* <button style={{ padding: '10px'}} onClick={()=>{deletePost(1)}}>Delete Button</button> */}
+        <Button onClick={createPost}>Create Post</Button>
       </>
     )
 }

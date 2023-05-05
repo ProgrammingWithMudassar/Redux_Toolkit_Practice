@@ -41,7 +41,7 @@ export const pokemonApi = createApi({
             }
         }),
 
-//   InDelete Query are two thing one is Callback function(pass the data) and other is object
+        //   InDelete Query are two thing one is Callback function(pass the data) and other is object
 
         deletePost: builder.mutation({
             query: (id) => {
@@ -54,7 +54,29 @@ export const pokemonApi = createApi({
             onError: (error) => {
                 console.log("Error fetching during deletePost : ", error);
             }
-        })
+        }),
+
+
+        createPost: builder.mutation({
+            query: () => {
+                return {
+                    url: `posts`,
+                    method: 'POST',
+                    body: {
+                        title: "This is new data.",
+                        body: "This is new body.",
+                        userId: 1,
+                    },
+                    header: {
+                        'Content-type': 'application/json; charset=UFT-8'
+                    }
+                }
+            },
+            onError: (error) => {
+                console.log("Error fetching during creating post : ", error);
+            }
+        }),
+
     }),
 })
 
@@ -63,5 +85,6 @@ export const {
     useGetAllPostsQuery,
     useGetPostByIdQuery,
     useGetPostByLimitQuery,
-    useDeletePostMutation
+    useDeletePostMutation,
+    useCreatePostMutation
 } = pokemonApi;
