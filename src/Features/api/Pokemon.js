@@ -56,7 +56,6 @@ export const pokemonApi = createApi({
             }
         }),
 
-
         createPost: builder.mutation({
             query: () => {
                 return {
@@ -77,6 +76,26 @@ export const pokemonApi = createApi({
             }
         }),
 
+        updatePost: builder.mutation({
+            query: () => {
+                return {
+                    url: `posts/${id}`,
+                    method: 'PUT',
+                    body: {
+                        title: "This is new data.",
+                        body: "This is new body.",
+                        userId: 1,
+                    },
+                    header: {
+                        'Content-type': 'application/json; charset=UFT-8'
+                    }
+                }
+            },
+            onError: (error) => {
+                console.log("Error fetching during creating post : ", error);
+            }
+        })
+
     }),
 })
 
@@ -86,5 +105,6 @@ export const {
     useGetPostByIdQuery,
     useGetPostByLimitQuery,
     useDeletePostMutation,
-    useCreatePostMutation
+    useCreatePostMutation,
+    useUpdatePostMutation,
 } = pokemonApi;
