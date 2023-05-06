@@ -17,7 +17,6 @@ const persistor = persistStore(store);
 
 
 root.render(
-  <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline>
         <Provider store={store}>
@@ -27,5 +26,4 @@ root.render(
         </Provider>
       </CssBaseline>
     </ThemeProvider>
-  </React.StrictMode>
 );

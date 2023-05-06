@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const PrivateRoute = () => {
   let isLoggedIn = false;
 
-  if(isLoggedIn){
+  if (isLoggedIn) {
     return <Outlet />
   }
   else {
+    useEffect(() => {
+      alert("Please login");
+    }, [])
     return (
       <>
-      {
-        alert("please first login")
-      }
-      <Navigate to={'/'} />
+        <Navigate to={'/'} />
       </>
-  )
-}
+    )
+  }
 }
 
 export default PrivateRoute
