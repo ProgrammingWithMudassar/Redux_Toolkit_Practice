@@ -21,8 +21,6 @@ function App() {
             <Route path="dashboard" element={<AdminDashboard />} />
           </Route>
 
-
-
         </Routes>
       </Router>
     </div>
